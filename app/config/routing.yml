@@ -1,0 +1,12 @@
+restaurant_auth:
+    resource: "@RestaurantAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
+restaurant_tables:
+    type: rest
+    resource: "@RestaurantTablesBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

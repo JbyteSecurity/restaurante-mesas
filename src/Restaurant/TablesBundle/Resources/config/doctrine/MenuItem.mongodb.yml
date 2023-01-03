@@ -1,0 +1,11 @@
+Restaurant\TablesBundle\Document\MenuItem:
+    repositoryClass: Restaurant\TablesBundle\Repository\MenuItemRepository
+    fields:
+        id:
+            id: true
+        name:
+            type: string
+        available:
+            type: boolean
+        price:
+            type: float

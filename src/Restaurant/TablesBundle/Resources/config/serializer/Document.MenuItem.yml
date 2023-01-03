@@ -1,0 +1,9 @@
+Restaurant\TablesBundle\Document\MenuItem:
+    relations:
+        -
+            rel: self
+            href:
+                route: get_item
+                parameters:
+                    id: expr(object.getId())
+                absolute: true

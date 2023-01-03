@@ -1,0 +1,41 @@
+security:
+    encoders:
+        Restaurant\AuthBundle\Document\User:
+            algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: password
+                        roles: 'ROLE_ADMIN'
+        user_db:
+            mongodb: { class: RestaurantAuthBundle:User, property: username}
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        default:
+            pattern: ^/
+            provider: user_db
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                default_target_path: /api/me
+            logout:
+                path: /logout
+                target: /app/
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/doc, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: ROLE_USER }

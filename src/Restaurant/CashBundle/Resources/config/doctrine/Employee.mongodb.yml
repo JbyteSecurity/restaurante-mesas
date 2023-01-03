@@ -1,0 +1,9 @@
+# src/Restaurant/CashBundle/Resources/config/doctrine/Employee.mongodb.yml
+Restaurant\CashBundle\Document\Employee:
+    fields:
+        id:
+            id: true
+        dni:
+            type: string
+        name:
+            type: string

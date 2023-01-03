@@ -1,0 +1,32 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+doctrine_mongodb:
+    connections:
+        default:
+            server: %mongodb_server%
+            options: {}
+    default_database: %mongodb_test_database%
+    document_managers:
+        default:
+            auto_mapping: true
+
+security:
+    firewalls:
+        default:
+            provider: in_memory
+            http_basic: ~

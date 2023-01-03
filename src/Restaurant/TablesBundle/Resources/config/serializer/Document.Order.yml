@@ -1,0 +1,21 @@
+Restaurant\TablesBundle\Document\Order:
+    exclusion_policy: ALL
+    properties:
+        id:
+          expose: true
+        date:
+          expose: true
+        table:
+          expose: true
+        active:
+          expose: true
+        employee:
+          expose: true
+    relations:
+        -
+            rel: self
+            href:
+                route: get_order
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
